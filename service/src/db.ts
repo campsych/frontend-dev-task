@@ -19,7 +19,7 @@ function readFixture(file: string): Promise<string> {
   });
 }
 
-function runScript(sql: string): Promise<number> {
+function runScript(sql: string): Promise<void> {
   return new Promise((resolve) => {
     db.exec(sql, (e) => {
       if (e) {
