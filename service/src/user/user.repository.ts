@@ -55,7 +55,7 @@ export async function save(user: User): Promise<User> {
 }
 
 function create(user: User): Promise<User> {
-  const sql = 'INSERT INTO `user` (id, birth_date, first_name, last_name, gender, created) VALUES (?, ?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO `user` (birth_date, first_name, last_name, gender, created) VALUES (?, ?, ?, ?, ?)';
   return db.exec(sql, Object.values(user))
     .then((r) => getExistingById(r.lastID));
 }
@@ -70,3 +70,4 @@ function update(user: User): Promise<User> {
 export class UserNotFoundException extends Error {
   name = 'UserNotFoundException';
 }
+
