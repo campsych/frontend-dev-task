@@ -10,7 +10,7 @@ import * as moment from 'moment';
 })
 export class CreateUserComponent implements OnInit {
 
-  userModel = new User('', '', '', '' , moment().format('YYYY-MM-DD'));
+  userModel = new User(moment().format('YYYY-MM-DD'), '', '', '' , moment().format('YYYY-MM-DD'));
 
   constructor(private _userService: UserService) { }
 

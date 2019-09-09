@@ -8,10 +8,10 @@ export interface User {
 
 export class User{
     constructor(
+        public birthDate: string,
         public firstName: string,
         public lastName: string,
         public gender: string,
-        public birthDate: string,
         public created: string
     ) {}
 }
