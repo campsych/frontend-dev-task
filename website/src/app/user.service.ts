@@ -12,23 +12,7 @@ export class UserService {
   user: any;
   constructor(private http: HttpClient) { }
 
-
-  // getUsers() {
-  //   this.users = this.http.get(this.SERVER_URL + '/users').subscribe((data) => {
-  //     this.users = data['items'];
-  //   });
-  //   return this.users;
-  // }
-
   getUsers() {
     return this.http.get(this.SERVER_URL + '/users');
   }
-
-  getUser(){
-    const param = 1;
-    this.user = this.http.get(this.SERVER_URL + `/users/${param}`).subscribe((data)=>{    
-      this.user = data['items'];
-    });
-  }
-
 }
