@@ -7,6 +7,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./list-users.component.scss']
 })
 export class ListUsersComponent implements OnInit {
+  public newUser: any;
   constructor(private _userService: UserService) { }
 
   users: any;
@@ -18,6 +19,5 @@ export class ListUsersComponent implements OnInit {
       this.users = data['items'];
       this.dataSource = data['items'];
     });
-    console.log(this.dataSource);
-   }
+  }
 }

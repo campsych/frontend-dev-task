@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 
 @Injectable({
@@ -7,12 +7,22 @@ import { User } from './user';
 })
 export class UserService {
 
-  readonly SERVER_URL = 'http://localhost:8080';
+  SERVER_URL = 'http://localhost:8080';
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+
   users: any;
-  user: any;
+  newUser: any;
   constructor(private http: HttpClient) { }
 
   getUsers() {
     return this.http.get(this.SERVER_URL + '/users');
+  }
+  create(user: User){
+    return this.http.post<any>(this.SERVER_URL + '/users', user, this.httpOptions);
   }
 }

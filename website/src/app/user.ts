@@ -1,8 +1,17 @@
 export interface User {
-    id: number;
-    birthDate: Date;
+    birthDate: string;
     firstName: string;
     lastName: string;
     gender: string;
-    created: Date;
+    created: string;
+}
+
+export class User{
+    constructor(
+        public firstName: string,
+        public lastName: string,
+        public gender: string,
+        public birthDate: string,
+        public created: string
+    ) {}
 }
