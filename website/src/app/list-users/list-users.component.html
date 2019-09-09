@@ -1,0 +1,15 @@
+
+
+
+<div *ngFor="let user of users | keyvalue">
+    {{user.value?.firstName}}
+</div> 
+
+<div *ngFor="let u of users | keyvalue">
+    {{u.value?.firstName}}
+</div>
+
+
+
+
+<!-- <button mat-raised-button (click)="getUser()">Get uno</button> -->
