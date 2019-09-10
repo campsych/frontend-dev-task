@@ -7,7 +7,7 @@
     </mat-card-header>
 
     <mat-card-actions align="end">
-        <button mat-stroked-button>Remove</button>
-        <button mat-raised-button color="accent">Update</button>
+        <button mat-stroked-button (click)="delete(u.value?.id)">Remove</button>
+        <button mat-raised-button (click)="update(u.value?.id)" color="accent">Update</button>
     </mat-card-actions>
 </mat-card>
