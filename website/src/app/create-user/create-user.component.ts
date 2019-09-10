@@ -18,7 +18,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmit(){
-    this._userService.create(this.userModel).subscribe(
+    this._userService.createUser(this.userModel).subscribe(
       data=> console.log("Success", data),
       error => console.error("Error", error)
     );

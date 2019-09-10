@@ -22,7 +22,7 @@ export class UserService {
   getUsers() {
     return this.http.get(this.SERVER_URL + '/users');
   }
-  create(user: User){
+  createUser(user: User){
     return this.http.post<any>(this.SERVER_URL + '/users', user, this.httpOptions);
   }
 }
