@@ -1,1 +1,13 @@
-<p>This works</p>
+<app-navigation></app-navigation>
+
+<mat-card class="user-card" *ngFor="let u of dataSource | keyvalue">
+    <mat-card-header>
+        <mat-card-title>{{u.value?.firstName}}</mat-card-title>
+        <mat-card-subtitle>{{u.value?.lastName}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-actions align="end">
+        <button mat-stroked-button>Remove</button>
+        <button mat-raised-button color="accent">Update</button>
+    </mat-card-actions>
+</mat-card>
