@@ -1,0 +1,11 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>Users</h1>
+    <input class="new-user" placeholder="add new user" autofocus="" [(ngModel)]="newUser.firstName" (keyup.enter)="onAddUser()">
+  </header>
+  <app-users
+    [users]="users"
+    (toggleComplete)="onToggleUserComplete($event)"
+    (remove)="onRemoveUser($event)"
+  ></app-users>
+</section>
