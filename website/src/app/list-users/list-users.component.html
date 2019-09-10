@@ -2,32 +2,34 @@
 
 <app-create-user></app-create-user>
 
-<mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
-    </ng-container>
+<div class="container">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="birthDate">
-        <mat-header-cell *matHeaderCellDef> Birthdate </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.birthDate}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="birthDate">
+            <mat-header-cell *matHeaderCellDef> Birthdate </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.birthDate}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="gender">
-        <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="gender">
+            <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="created">
-        <mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.created}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="created">
+            <mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.created}} </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row (click)="userDetail(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="userDetail(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,25 +12,59 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class UserDetailComponent implements OnInit {
   userId;
-  dataSource: any;
-  
-  constructor(private _userService: UserService, private route: ActivatedRoute) { }
+  form: FormGroup;
+  user;
+
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.userId = id;
 
-    this._userService.getUser(this.userId).subscribe((data) => {
-      const arr = [];
-      arr.push(data);
-      this.dataSource = arr;
+    this.form = this.formBuilder.group({
+      id: [''],
+      firstName: [''],
+      lastName: [''],
+      gender: [''],
+      birthDate: ['']
+    });
+
+    this.userService.getUser(this.userId).subscribe((data) => {
+      this.user = data;
+      this.form.patchValue({
+        id: data['id'],
+        firstName: data['firstName'],
+        lastName: data['lastName'],
+        gender: data['gender'],
+        birthDate: data['birthDate']
+      });
     });
   }
 
-  delete(id: number): void {
-    this._userService.deleteUser(id).subscribe();
+  delete(id: number) {
+    this.userService.deleteUser(id).subscribe(
+      () => this.router.navigate(['/']),
+      err => console.log(err)
+    );
   }
-  update() {
-    //this._userService.updateUser(this.userId);
+  updateUser() {
+    this.mapValues();
+    this.userService.updateUser(this.user).subscribe(
+      () => this.router.navigate(['/']),
+      err => console.log(err)
+    );
+  }
+
+  mapValues() {
+    this.user.id = this.form.value.id;
+    this.user.firstName = this.form.value.firstName;
+    this.user.lastName = this.form.value.lastName;
+    this.user.birthDate = this.form.value.birthDate;
+    this.user.gender = this.form.value.gender;
   }
 }
