@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../user';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,16 +10,10 @@ import { User } from '../user';
 })
 
 export class UserDetailComponent implements OnInit {
-  public userId;
-  SERVER_URL = 'http://localhost:8080';
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
+  userId;
   dataSource: any;
   
-  constructor(private _userService: UserService, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private _userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));

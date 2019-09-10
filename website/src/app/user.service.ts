@@ -19,18 +19,18 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers() {// return a list of all users
-    return this.http.get(this.SERVER_URL + '/users');
+    return this.http.get(`${this.SERVER_URL}/users`);
   }
   getUser(id) {// return an user with a specific id
-    return this.http.get(this.SERVER_URL + `/users/${id}`);
+    return this.http.get(`${this.SERVER_URL}/users/${id}`);
   }
   createUser(user: User) {// add(post) a new user
-    return this.http.post<any>(this.SERVER_URL + '/users', user, this.httpOptions);
+    return this.http.post<any>(`${this.SERVER_URL}/users`, user, this.httpOptions);
   }
   updateUser(user: User) {// update user data
-    return this.http.put(this.SERVER_URL + '/users', user, this.httpOptions);
+    return this.http.put(`${this.SERVER_URL}/users`, user, this.httpOptions);
   }
   deleteUser(id: number) {// delete an user with a specific id
-    return this.http.delete(this.SERVER_URL + `/users/${id}`);
+    return this.http.delete(`${this.SERVER_URL}/users/${id}`);
   }
 }
