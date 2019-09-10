@@ -1,9 +1,9 @@
 <app-navigation></app-navigation>
 
 
-<div class="container-fluid">
+<div class="user-detail-container" fxLayout="column" fxLayoutAlign="space-between">
     <form [formGroup]="form">
-        <mat-card-content>
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
             <mat-form-field>
                 <input matInput type="text" placeholder="First name" formControlName="firstName">
             </mat-form-field>
@@ -32,6 +32,5 @@
             <button mat-stroked-button (click)="delete(userId)">Remove</button>
             <button mat-raised-button (click)="updateUser()" color="accent">Update</button>
         </mat-card-actions>
-
     </form>
 </div>

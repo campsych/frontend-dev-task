@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {FlexModule} from '@angular/flex-layout';
 import { 
   MatButtonModule, 
   MatTableModule, 
@@ -9,9 +10,10 @@ import {
   MatNativeDateModule,
   MatCardModule,
   MatDialogModule,
+  MatToolbarModule
  } from '@angular/material';
 
-const MaterialComponents = [
+const material = [
   MatButtonModule,
   MatTableModule,
   MatFormFieldModule,
@@ -21,10 +23,12 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatCardModule,
   MatDialogModule,
-]
+  MatToolbarModule,
+  FlexModule
+];
 
 @NgModule({
-  imports: [MaterialComponents],
-  exports:[MaterialComponents]
+  imports: [material],
+  exports: [material]
 })
 export class MaterialModule { }

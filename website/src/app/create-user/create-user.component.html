@@ -1,6 +1,6 @@
-<div class="list-users">
-    <form #userForm="ngForm" (ngSubmit)="onSubmit()">
-        <mat-card-content>
+<div class="create-user" fxLayout="column" fxLayoutAlign="space-between">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-between" >
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
             <mat-form-field>
                 <input matInput type="text" placeholder="First name" name="firstName" [(ngModel)]="userModel.firstName">
             </mat-form-field>
@@ -14,6 +14,7 @@
                 <select matNativeControl [(ngModel)]="userModel.gender" name="gender">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
+                    <option value="O">Preffer not to say</option>
                 </select>
             </mat-form-field>
 
