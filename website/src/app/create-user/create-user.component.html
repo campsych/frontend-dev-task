@@ -1,19 +1,23 @@
 <div class="create-user" fxLayout="column" fxLayoutAlign="space-between">
     <h2 class="primary">Add user</h2>
-    <form #userForm="ngForm" [formGroup]="createForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-between">
+    <form #userForm="ngForm" [formGroup]="createForm" #f="ngForm" (ngSubmit)="onSubmit()" fxLayout="column"
+        fxLayoutAlign="space-between">
         <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
             <mat-form-field appearance="outline">
                 <mat-label>First name</mat-label>
-                <input matInput type="text" name="firstName" formControlName="firstName">
+                <input [class.is-invalid]="createForm.get('firstName').invalid" matInput type="text" name="firstName"
+                    formControlName="firstName" required>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last name</mat-label>
-                <input matInput type="text" name="lastName" formControlName="lastName">
+                <input [class.is-invalid]="createForm.get('lastName').invalid" matInput type="text" name="lastName"
+                    formControlName="lastName" required>
             </mat-form-field>
 
             <mat-label>Gender</mat-label>
-            <mat-radio-group class="radio-group gender" formControlName="gender" name="gender">
+            <mat-radio-group [class.is-invalid]="createForm.get('gender').invalid" class="radio-group gender"
+                formControlName="gender" name="gender" required>
                 <mat-radio-button color="primary" value="M">Male</mat-radio-button>
                 <mat-radio-button color="primary" value="F">Female</mat-radio-button>
             </mat-radio-group>
@@ -28,7 +32,7 @@
 
         <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
             <button mat-button type="button" class="Discard-btn" (click)="openDialog()">Cancel</button>
-            <button mat-raised-button color="accent">Add user</button>
+            <button mat-raised-button color="accent" [disabled]="!createForm.valid">Add user</button>
         </mat-card-actions>
     </form>
 </div>

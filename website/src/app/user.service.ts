@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers() {// return a list of all users
-    return this.http.get(`${this.SERVER_URL}/users?size=400`);
+    return this.http.get(`${this.SERVER_URL}/users?size=210`);
   }
   getUser(id) {// return an user with a specific id
     return this.http.get<User[]>(`${this.SERVER_URL}/users/${id}`);
