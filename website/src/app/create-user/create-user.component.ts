@@ -13,13 +13,13 @@ export class CreateUserComponent implements OnInit {
 
   userModel = new User(moment().format('YYYY-MM-DD'), '', '', '', moment().format('YYYY-MM-DD'));
 
-  constructor(private _userService: UserService, public dialog: MatDialog) { }
+  constructor(private service: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    this._userService.createUser(this.userModel).subscribe(
+    this.service.createUser(this.userModel).subscribe(
       data => console.log("Success", data),
       error => console.error("Error", error)
     );
