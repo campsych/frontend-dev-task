@@ -30,7 +30,6 @@ export class ListUsersComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data['items']);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.dataSource);
       this.resultsLength = data['size'];
       this.perPage = data['size']
     });

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../user';
 import * as moment from 'moment';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';

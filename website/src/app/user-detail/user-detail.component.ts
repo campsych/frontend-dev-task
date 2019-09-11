@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-user-detail',
@@ -19,6 +21,7 @@ export class UserDetailComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
     private router: Router
   ) { }
 
@@ -41,7 +44,7 @@ export class UserDetailComponent implements OnInit {
         firstName: data['firstName'],
         lastName: data['lastName'],
         gender: data['gender'],
-        birthDate: data['birthDate']
+        birthDate: moment(data['birthDate'], 'YYYY-MM-DD').format('YYYY-MM-DD')
       });
     });
   }
@@ -51,11 +54,12 @@ export class UserDetailComponent implements OnInit {
       () => this.router.navigate(['/']),
       err => console.log(err)
     );
+    this.openSnackBar(`User removed!`, 'Dismiss');
   }
   updateUser() {
     this.mapValues();
     this.userService.updateUser(this.user).subscribe(
-      () => this.router.navigate(['/']),
+      () => this.openSnackBar(`User updated!`, 'Dismiss'),
       err => console.log(err)
     );
   }
@@ -64,7 +68,11 @@ export class UserDetailComponent implements OnInit {
     this.user.id = this.updateForm.value.id;
     this.user.firstName = this.updateForm.value.firstName;
     this.user.lastName = this.updateForm.value.lastName;
-    this.user.birthDate = this.updateForm.value.birthDate;
+    this.user.birthDate = moment(this.updateForm.value.birthDate, 'YYYY-MM-DD').format('YYYY-MM-DD');
     this.user.gender = this.updateForm.value.gender;
+  }
+
+  openSnackBar(message, action) {
+    this.snackBar.open(message, action);
   }
 }
