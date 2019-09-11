@@ -13,12 +13,12 @@ export class UseritemComponent {
   @Output()
   remove: EventEmitter<User> = new EventEmitter();
 
-  @Output()
-  toggleComplete: EventEmitter<User> = new EventEmitter();
-
   constructor() { }
 
   ngOnInit() {
   }
 
+  removeUser(user: User) {
+    this.remove.emit(user);
+  }
 }

@@ -24,7 +24,19 @@ export class AppComponent implements OnInit {
   }
 
   onAddUser() {
+    this.newUser.id="333";
+    this.newUser.created=new Date();
     this.users.push(this.newUser);
     this.userService.addUser(this.newUser);
+  }
+
+  onRemoveUser(user) {
+    this.userService
+      .deleteUserById(user.id)
+      .subscribe(
+        (_) => {
+          this.users = this.users.filter((t) => t.id !== user.id);
+        }
+      );
   }
 }

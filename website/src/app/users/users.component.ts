@@ -19,7 +19,7 @@ export class UsersComponent {
   @Output()
   remove: EventEmitter<User> = new EventEmitter();
 
-  @Output()
-  toggleComplete: EventEmitter<User> = new EventEmitter();
-
+  onRemoveUser(user: User) {
+    this.remove.emit(user);
+  }
 }
