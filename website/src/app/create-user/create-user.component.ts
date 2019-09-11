@@ -28,8 +28,8 @@ export class CreateUserComponent implements OnInit {
       firstName: [''],
       lastName: [''],
       gender: [''],
-      birthDate: [moment(new Date()).format('YYYY/MM/DD')],
-      created: [moment().format('YYYY/MM/DD')]
+      birthDate: [moment(new Date()).format('YYYY-MM-DD')],
+      created: [moment().format('YYYY-MM-DD')]
     });
   }
 
@@ -38,8 +38,8 @@ export class CreateUserComponent implements OnInit {
       firstName: this.createForm.value.firstName,
       lastName: this.createForm.value.lastName,
       gender: this.createForm.value.gender,
-      birthDate: moment(this.createForm.value.birthDate, 'YYYY/MM/DD').format('YYYY/MM/DD'),
-      created: moment().format('YYYY/MM/DD')
+      birthDate: moment(this.createForm.value.birthDate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
+      created: moment().format('YYYY-MM-DD')
     }
 
     this.service.createUser(this.formValues).subscribe(

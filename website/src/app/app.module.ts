@@ -18,10 +18,10 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const DATE_FORMAT = {
   parse: {
-    dateInput: 'YYYY/MM/DD',
+    dateInput: 'YYYY-MM-DD',
   },
   display: {
-    dateInput: 'YYYY/MM/DD',
+    dateInput: 'YYYY-MM-DD',
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMMM YYYY',
