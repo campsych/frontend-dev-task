@@ -22,7 +22,7 @@ export class UserService {
   getUser(id) {// return an user with a specific id
     return this.http.get<User[]>(`${this.SERVER_URL}/users/${id}`);
   }
-  createUser(user: User) {// add(post) a new user
+  createUser(user) {// add(post) a new user
     return this.http.post(`${this.SERVER_URL}/users`, user, this.httpOptions);
   }
   updateUser(user) {// update user data

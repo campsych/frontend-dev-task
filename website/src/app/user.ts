@@ -1,9 +1,9 @@
 export class User {
     constructor(
-        public birthDate: string,
+        public birthDate: Date,
         public firstName: string,
         public lastName: string,
         public gender: string,
-        public created: string
+        public created: Date
     ) {}
 }

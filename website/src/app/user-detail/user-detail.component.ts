@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class UserDetailComponent implements OnInit {
   userId;
-  form: FormGroup;
+  updateForm: FormGroup;
   user;
 
   constructor(
@@ -26,7 +26,7 @@ export class UserDetailComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.userId = id;
 
-    this.form = this.formBuilder.group({
+    this.updateForm = this.formBuilder.group({
       id: [''],
       firstName: [''],
       lastName: [''],
@@ -36,7 +36,7 @@ export class UserDetailComponent implements OnInit {
 
     this.userService.getUser(this.userId).subscribe((data) => {
       this.user = data;
-      this.form.patchValue({
+      this.updateForm.patchValue({
         id: data['id'],
         firstName: data['firstName'],
         lastName: data['lastName'],
@@ -61,10 +61,10 @@ export class UserDetailComponent implements OnInit {
   }
 
   mapValues() {
-    this.user.id = this.form.value.id;
-    this.user.firstName = this.form.value.firstName;
-    this.user.lastName = this.form.value.lastName;
-    this.user.birthDate = this.form.value.birthDate;
-    this.user.gender = this.form.value.gender;
+    this.user.id = this.updateForm.value.id;
+    this.user.firstName = this.updateForm.value.firstName;
+    this.user.lastName = this.updateForm.value.lastName;
+    this.user.birthDate = this.updateForm.value.birthDate;
+    this.user.gender = this.updateForm.value.gender;
   }
 }

@@ -1,26 +1,26 @@
 <div class="create-user" fxLayout="column" fxLayoutAlign="space-between">
     <h2 class="primary">Add user</h2>
-    <form #userForm="ngForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-between">
+    <form #userForm="ngForm" [formGroup]="createForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-between">
         <mat-card-content fxLayout="column" fxLayoutAlign="space-between">
             <mat-form-field appearance="outline">
                 <mat-label>First name</mat-label>
-                <input matInput type="text" name="firstName" [(ngModel)]="userModel.firstName">
+                <input matInput type="text" name="firstName" formControlName="firstName">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last name</mat-label>
-                <input matInput type="text" name="lastName" [(ngModel)]="userModel.lastName">
+                <input matInput type="text" name="lastName" formControlName="lastName">
             </mat-form-field>
 
             <mat-label>Gender</mat-label>
-            <mat-radio-group class="radio-group gender" [(ngModel)]="userModel.gender" name="gender">
+            <mat-radio-group class="radio-group gender" formControlName="gender" name="gender">
                 <mat-radio-button color="primary" value="M">Male</mat-radio-button>
                 <mat-radio-button color="primary" value="F">Female</mat-radio-button>
             </mat-radio-group>
 
             <mat-form-field appearance="outline">
                 <mat-label>Birthdate</mat-label>
-                <input matInput [matDatepicker]="myDatePicker" name="birthDate" [(ngModel)]="userModel.birthDate">
+                <input matInput [matDatepicker]="myDatePicker" name="birthDate" formControlName="birthDate">
                 <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
                 <mat-datepicker #myDatePicker></mat-datepicker>
             </mat-form-field>

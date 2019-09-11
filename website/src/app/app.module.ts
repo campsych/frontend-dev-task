@@ -11,9 +11,22 @@ import { UserService } from './user.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+
+
+const MY_FORMATS = {
+  parse: {
+    dateInput: 'YYYY/MM/DD',
+  },
+  display: {
+    dateInput: 'YYYY/MM/DD',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -23,7 +36,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     CreateUserComponent,
     UserDetailComponent
   ],
-  entryComponents:[ CreateUserComponent ],
+  entryComponents: [CreateUserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,9 +48,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
   ],
   providers: [
     UserService,
-    {provide: MAT_DATE_LOCALE, useValue: 'ja-JP'},
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
   bootstrap: [AppComponent]
 })

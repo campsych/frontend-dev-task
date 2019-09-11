@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -11,20 +12,40 @@ import { MatDialog } from '@angular/material';
 })
 export class CreateUserComponent implements OnInit {
 
-  userModel = new User(moment().format('YYYY-MM-DD'), '', '', '', moment().format('YYYY-MM-DD'));
+  constructor(
+    private service: UserService,
+    public dialog: MatDialog,
+    private formBuilder: FormBuilder
+  ) { }
 
-  constructor(private service: UserService, public dialog: MatDialog) { }
+  createForm: FormGroup;
+  formValues;
 
   ngOnInit() {
+    this.createForm = this.formBuilder.group({
+      id: [''],
+      firstName: [''],
+      lastName: [''],
+      gender: [''],
+      birthDate: [moment(new Date()).format('YYYY/MM/DD')],
+      created: [moment().format('YYYY/MM/DD')]
+    });
   }
 
   onSubmit() {
-    this.service.createUser(this.userModel).subscribe(
+    this.formValues = {
+      firstName: this.createForm.value.firstName,
+      lastName: this.createForm.value.lastName,
+      gender: this.createForm.value.gender,
+      birthDate: moment(this.createForm.value.birthDate, 'YYYY/MM/DD').format('YYYY/MM/DD'),
+      created: moment().format('YYYY/MM/DD')
+    }
+
+    this.service.createUser(this.formValues).subscribe(
       data => console.log("Success", data),
       error => console.error("Error", error)
     );
   }
-
 
   openDialog(): void {
     this.dialog.closeAll();
