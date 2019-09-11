@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import * as moment from 'moment';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,7 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private service: UserService,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private formBuilder: FormBuilder
   ) { }
 
@@ -42,13 +43,20 @@ export class CreateUserComponent implements OnInit {
     }
 
     this.service.createUser(this.formValues).subscribe(
-      data => console.log("Success", data),
-      error => console.error("Error", error)
+      data => {
+        this.openSnackBar(`User ${data['firstName']} ${data['lastName']} added`, 'Dismiss');
+        this.createForm.reset();
+      },
+      error => console.error('Error', error)
     );
   }
 
   openDialog(): void {
     this.dialog.closeAll();
+  }
+
+  openSnackBar(message, action) {
+    this.snackBar.open(message, action);
   }
 
 }

@@ -11,12 +11,12 @@ import { UserService } from './user.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
-const MY_FORMATS = {
+const DATE_FORMAT = {
   parse: {
     dateInput: 'YYYY/MM/DD',
   },
@@ -49,7 +49,7 @@ const MY_FORMATS = {
   providers: [
     UserService,
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
   ],
   bootstrap: [AppComponent]
 })
