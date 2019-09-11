@@ -23,6 +23,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     CreateUserComponent,
     UserDetailComponent
   ],
+  entryComponents:[ CreateUserComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,8 +1,7 @@
 <app-navigation></app-navigation>
 
-<app-create-user></app-create-user>
-
 <div class="container">
+    <button mat-raised-button color="primary" (click)="openDialog()" fxFlexAlign="end"  dir="rtl">New user</button>
     <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="firstName">
             <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>

@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import {FlexModule} from '@angular/flex-layout';
-import { 
-  MatButtonModule, 
-  MatTableModule, 
-  MatFormFieldModule, 
-  MatSelectModule, 
+import {
+  MatButtonModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatSelectModule,
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatCardModule,
   MatDialogModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatIconModule,
+  MatRadioModule,
+  MatPaginatorModule,
  } from '@angular/material';
 
 const material = [
@@ -24,7 +27,10 @@ const material = [
   MatCardModule,
   MatDialogModule,
   MatToolbarModule,
-  FlexModule
+  FlexModule,
+  MatIconModule,
+  MatRadioModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

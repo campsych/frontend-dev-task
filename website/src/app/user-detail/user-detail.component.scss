@@ -1,7 +1,15 @@
-.user-detail-container
-{
-    max-width: 500px;
-    margin: auto;
-    padding: 0 26px;
-    margin-top: 24px;
+.user-detail-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 0 26px;
+  margin-top: 24px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  mat-radio-button {
+    margin: 5px;
+  }
 }
