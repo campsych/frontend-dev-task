@@ -21,12 +21,12 @@
         </ng-container>
 
         <ng-container matColumnDef="gender">
-            <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Gender </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="created">
-            <mat-header-cell *matHeaderCellDef> Created </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Created </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.created}} </mat-cell>
         </ng-container>
 

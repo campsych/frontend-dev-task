@@ -24,22 +24,24 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {
     this.createForm = this.formBuilder.group({
       id: [''],
+      birthDate: [moment(new Date()).format('YYYY-MM-DD')],
       firstName: [''],
       lastName: [''],
       gender: [''],
-      birthDate: [moment(new Date()).format('YYYY-MM-DD')],
       created: [moment().format('YYYY-MM-DD')]
     });
   }
 
   onSubmit() {
     this.formValues = {
+      birthDate: moment(this.createForm.value.birthDate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
       firstName: this.createForm.value.firstName,
       lastName: this.createForm.value.lastName,
       gender: this.createForm.value.gender,
-      birthDate: moment(this.createForm.value.birthDate, 'YYYY-MM-DD').format('YYYY-MM-DD'),
       created: moment().format('YYYY-MM-DD')
     }
+
+    console.log(this.formValues);
 
     this.service.createUser(this.formValues).subscribe(
       data => {

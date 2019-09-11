@@ -66,9 +66,9 @@ export class UserDetailComponent implements OnInit {
 
   mapValues() {
     this.user.id = this.updateForm.value.id;
+    this.user.birthDate = moment(this.updateForm.value.birthDate, 'YYYY-MM-DD').format('YYYY-MM-DD');
     this.user.firstName = this.updateForm.value.firstName;
     this.user.lastName = this.updateForm.value.lastName;
-    this.user.birthDate = moment(this.updateForm.value.birthDate, 'YYYY-MM-DD').format('YYYY-MM-DD');
     this.user.gender = this.updateForm.value.gender;
   }
 
