@@ -14,6 +14,8 @@ import {
   MatIconModule,
   MatRadioModule,
   MatPaginatorModule,
+  MatSortModule,
+  MatTooltipModule
  } from '@angular/material';
 
 const material = [
@@ -30,7 +32,9 @@ const material = [
   FlexModule,
   MatIconModule,
   MatRadioModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule,
+  MatTooltipModule
 ];
 
 @NgModule({

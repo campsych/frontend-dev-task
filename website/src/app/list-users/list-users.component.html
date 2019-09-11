@@ -1,15 +1,17 @@
 <app-navigation></app-navigation>
 
 <div class="container">
-    <button mat-raised-button color="primary" (click)="openDialog()" fxFlexAlign="end"  dir="rtl">New user</button>
-    <mat-table [dataSource]="dataSource">
+    <button mat-raised-button color="primary" (click)="openDialog()">
+        <mat-icon aria-hidden="false" aria-label="Add icon">add</mat-icon>New user
+    </button>
+    <mat-table [dataSource]="dataSource" matSort matSortActive="created" matSort matSortDirection="desc">
         <ng-container matColumnDef="firstName">
-            <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
         </ng-container>
 
@@ -28,7 +30,21 @@
             <mat-cell *matCellDef="let element"> {{element.created}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button color="accent" (click)="userDetail(row)" matTooltip="View details">
+                    <mat-icon class="mat-18">open_in_new</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn" (click)="userDetail(row)" matTooltip="Delete row">
+                    <mat-icon class="mat-18">delete_forever</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row (click)="userDetail(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5]" [pageSize]="5"></mat-paginator>
 </div>
