@@ -1,0 +1,25 @@
+.user-list {
+    padding-top: 2em;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #eee;
+        box-shadow: 1px 1px 7px #ccc;
+    }
+    .control-btn-group {
+        .btn {
+            margin: 1em;
+            &:focus {
+                box-shadow: none;
+            }
+            .disabled{ pointer-events: none }
+        }
+    }
+    .list-header {
+        padding: 1em;
+        font-size: 1.2em;
+        margin: 0;
+        border-bottom: 1px solid #ccc;
+    }
+}

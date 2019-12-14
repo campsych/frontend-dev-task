@@ -1,0 +1,13 @@
+<div class="container user-profile">
+    <h5>User Profile</h5>
+    <ul class="list-group">
+        <li class="list-group-item">Name: {{user.firstName}} {{user.lastName}}</li>
+        <li class="list-group-item">Date of birth: {{user.birthDate}}</li>
+        <li class="list-group-item">Gender: {{gender[user.gender]}}</li>
+    </ul>
+    <div class="text-center profile-footer">
+            <a (click)="goBack()" class="btn back-btn">Back to user list</a>
+            <a [routerLink]="['/edit-user', user.id]" class="btn btn-outline-primary">Edit</a>
+        <button (click)="deleteUser(user.id)" class="btn btn-outline-danger">Remove</button>
+    </div>
+</div>

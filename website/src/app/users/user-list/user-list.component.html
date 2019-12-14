@@ -1,0 +1,31 @@
+<div class="container user-list">
+    <ul class="col-xs-12">
+        <li>
+            <div class="row list-header">
+                    <div class="col">
+                        Name
+                    </div>
+                    <div class="col">
+                        Birth Date
+                    </div>
+                    <div class="col">
+                        Gender
+                    </div>
+                    <div class="col">
+                        Edit
+                    </div>
+                    <div class="col">
+                        Remove
+                    </div>   
+            </div>
+        </li>
+        <li *ngFor="let user of users">
+            <app-user-list-item [user]="user"></app-user-list-item>
+        </li>
+    </ul>
+    <div class="text-center control-btn-group">
+        <a class="btn btn-outline-primary"  [routerLink]="['/', page > 0 ? (page - 1) : 0]" [class.disabled]="page === 0" > Previous </a>
+        <span class="text-info">{{page + 1}}</span>
+        <a class="btn btn-outline-primary"  [routerLink]="['/', page < totalPage ? (page + 1) : page]" [class.disabled]="page === totalPage" > Next </a>
+    </div>
+</div>

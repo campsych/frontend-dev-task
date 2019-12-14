@@ -1,0 +1,17 @@
+<div class="row user-list-item">
+    <div class="col user-name" (click)="showUserProfile()">
+        {{user.firstName}} {{user.lastName}}
+    </div>
+    <div class="col">
+        {{user.birthDate}}
+    </div>
+    <div class="col">
+        {{gender[user.gender]}}
+    </div>
+    <div class="col">
+        <a [routerLink]="['/edit-user', user.id]">Edit</a>
+    </div>
+    <div class="col">
+        Remove
+    </div>
+</div>
