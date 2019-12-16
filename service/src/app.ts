@@ -10,6 +10,7 @@ app.set('port', process.env.PORT || 8080);
 
 app.use(compression());
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.set('json spaces', 2);

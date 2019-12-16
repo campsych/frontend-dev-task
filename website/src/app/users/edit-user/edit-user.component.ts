@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { UsersService } from './../services/users.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class EditUserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private userService: UsersService) { }
 
     initializeUserData(id: string) {
@@ -33,14 +35,18 @@ export class EditUserComponent implements OnInit {
     })
   }
 
-  onSubmit(id, user) {
-    console.log(user)
-    const userPayload = user.form.value;
+  onSubmit(id) {
+    const userPayload = this.user;
     this.userService.updateUserById(id, userPayload)
       .subscribe(
-        success => this.router.navigate(['']),
+        success => this.router.navigate(['user', id]),
         error => console.log(error)
       )
   }
+
+  goBack() {
+    this.location.back(); 
+  }
+
 
 }
