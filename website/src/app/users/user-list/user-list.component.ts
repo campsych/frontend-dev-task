@@ -16,7 +16,7 @@ export class UserListComponent implements OnInit {
   public total: number = 0;
   public totalPage: number = 0;
   public pageSizeOptions: number[] = [5, 10, 25, 100];
-  public displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'gender', 'id'];
+  public displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'gender', 'id', 'delete'];
   public gender: object = {
     M: 'Male',
     F: 'Female'
@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
     private userService: UsersService
   ) { }
 
-  initializeUserData(page: number = 0, size: number = this.size) {
+  initializeUserData(page: number = this.page, size: number = this.size) {
     this.userService.getUserList(page, size)
       .subscribe((data:{ items: User[], page :number, total: number, size: number}) => {
         this.dataSource = data.items;
@@ -54,12 +54,24 @@ export class UserListComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const page = parseInt(params.get("page")) || 0;
       this.page = page;
-      this.initializeUserData(page)
+      this.initializeUserData(page);
     })
   }
 
   fetchData(pageOption) {
-    this.initializeUserData(pageOption.pageIndex, pageOption.pageSize)
+    this.initializeUserData(pageOption.pageIndex, pageOption.pageSize);
+  }
+
+  deleteUser(userId) {
+    this.userService.deleteUserById(userId)
+      .subscribe(
+        success => {
+          this.initializeUserData();
+        },
+        error => console.log(error)
+      );
+      // /users/[userId] api is not working as expected, the request is not completing successfully.
+      setTimeout(() => this.initializeUserData(), 200); 
   }
 
 }

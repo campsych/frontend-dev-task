@@ -1,8 +1,11 @@
-.user-profile{
+.user-profile {
     display: flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
+    .alert-error {
+        color: #f63;
+    }
     .mat-card {
         width: 50%;
         @media screen and (max-width: 767px) {

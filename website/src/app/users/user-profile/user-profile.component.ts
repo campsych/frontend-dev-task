@@ -44,10 +44,10 @@ export class UserProfileComponent implements OnInit {
         },
         error => console.log(error)
       );
-    ;
+    this.router.navigate(['']);
   }
 
   goBack() {
-    this.location.back(); 
+    this.location.back();
   }
 }
