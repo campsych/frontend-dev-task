@@ -11,16 +11,13 @@ import { User } from './../models/User';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  private user: object = {}
+  private user: object = {};
   public gender: object = {
     M: 'Male',
     F: 'Female'
-  }
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private userService: UsersService) { }
+  };
+
+  constructor( private route: ActivatedRoute, private router: Router, private location: Location, private userService: UsersService) { }
 
   initializeUserData(id: string) {
     this.userService.getUserById(id)
@@ -31,9 +28,11 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id = params.get("id");
+      const id = params.get('id');
       this.initializeUserData(id);
-    })
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   deleteUser(userId) {

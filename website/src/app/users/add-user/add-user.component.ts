@@ -16,16 +16,13 @@ export class AddUserComponent {
     lastName: '',
     gender: '',
     birthDate: ''
-  }
-  errorMessage: string = ''
+  };
+  errorMessage = '';
 
-  constructor(private route: ActivatedRoute,
-    private router: Router,
-    private location: Location,
-    private userService: UsersService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private location: Location, private userService: UsersService) { }
 
-  isValidName(name) {
-    return (name.match(/^[a-z\s]{1,255}$/i))
+  isValidName(name: string) {
+    return (name.match(/^[a-z\s]{1,255}$/i));
   }
 
   addUser() {
@@ -34,15 +31,15 @@ export class AddUserComponent {
       lastName,
       gender,
       birthDate
-    } = this.user
+    } = this.user;
     if (!this.isValidName(firstName)) {
-      this.errorMessage = 'Please enter valid first name'
+      this.errorMessage = 'Please enter valid first name';
     } else if (!this.isValidName(lastName)) {
-      this.errorMessage = 'Please enter valid last name'
+      this.errorMessage = 'Please enter valid last name';
     } else if (!moment(birthDate).isValid()) {
-      this.errorMessage = 'Please select valid date of birth'
+      this.errorMessage = 'Please select valid date of birth';
     } else if (!gender) {
-      this.errorMessage = 'Please select gender'
+      this.errorMessage = 'Please select gender';
     } else {
       const userPayload = {
         ...this.user,
@@ -55,7 +52,7 @@ export class AddUserComponent {
             this.router.navigate(['/user', res.id]);
           },
           error => console.log(error)
-        )
+        );
     }
   }
 }

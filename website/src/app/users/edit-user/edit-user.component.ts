@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import moment from 'moment/src/moment'
+import moment from 'moment/src/moment';
 import { UsersService } from './../services/users.service';
-import { User } from './../models/User'
+import { User } from './../models/User';
 
 const userOb: User = {
   id: 0,
@@ -12,7 +12,7 @@ const userOb: User = {
   gender: '',
   birthDate: '',
   created: ''
-}
+};
 
 @Component({
   selector: 'app-edit-user',
@@ -26,8 +26,8 @@ export class EditUserComponent implements OnInit {
   public gender: object = {
     M: 'Male',
     F: 'Female'
-  }
-  public errorMessage : string = ''
+  };
+  public errorMessage = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -44,11 +44,11 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.user = userOb;
-    this.errorMessage = ''
+    this.errorMessage = '';
     this.route.paramMap.subscribe(params => {
-      const id = params.get("id");
+      const id = params.get('id');
       this.initializeUserData(id);
-    })
+    });
   }
 
   onSubmit(id) {
@@ -57,15 +57,15 @@ export class EditUserComponent implements OnInit {
       lastName,
       gender,
       birthDate
-    } = this.user
+    } = this.user;
     if (!this.isValidName(firstName)) {
-      this.errorMessage = 'Please enter valid first name'
+      this.errorMessage = 'Please enter valid first name';
     } else if (!this.isValidName(lastName)) {
-      this.errorMessage = 'Please enter valid last name'
+      this.errorMessage = 'Please enter valid last name';
     } else if (!moment(birthDate).isValid()) {
-      this.errorMessage = 'Please select valid date of birth'
+      this.errorMessage = 'Please select valid date of birth';
     } else if (!gender) {
-      this.errorMessage = 'Please select gender'
+      this.errorMessage = 'Please select gender';
     } else {
       const userPayload = {
         ...this.user,
@@ -76,16 +76,16 @@ export class EditUserComponent implements OnInit {
         .subscribe(
           success => this.router.navigate(['user', id]),
           error => console.log(error)
-        )
+        );
       }
   }
 
   goBack() {
-    this.location.back(); 
+    this.location.back();
   }
 
   isValidName(name) {
-    return (name.match(/^[a-z\s]{1,255}$/i))
+    return (name.match(/^[a-z\s]{1,255}$/i));
   }
 
 }

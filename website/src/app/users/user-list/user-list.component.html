@@ -1,6 +1,6 @@
 <div class="user-table">
-    <div layout="row">
-        <button mat-raised-button color="primary" [routerLink]="['/add-user']">Create User</button>
+    <div layout="row" class="create-button-block">
+        <a mat-raised-button color="primary" [routerLink]="['/add-user']">Create User</a>
     </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z10">
 

@@ -29,3 +29,11 @@
         border-bottom: 1px solid #ccc;
     }
 }
+
+.create-button-block {
+    height: 80px;
+    button {
+        margin: 2em 4em;
+        float: right;
+    }
+}

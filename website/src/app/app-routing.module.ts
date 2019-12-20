@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserListComponent } from './users/user-list/user-list.component'
-import { UserProfileComponent } from './users/user-profile/user-profile.component'
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 
