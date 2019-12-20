@@ -8,12 +8,14 @@ import { UsersService } from './../services/users.service';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.scss']
 })
+
 export class EditUserComponent implements OnInit {
   private user: Object = {id: ''}
   public gender: object = {
     M: 'Male',
     F: 'Female'
   }
+  public errorMessage : string = ''
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +31,8 @@ export class EditUserComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.user = {id: ''}
+    this.errorMessage = ''
     this.route.paramMap.subscribe(params => {
       const id = params.get("id");
       this.initializeUserData(id);

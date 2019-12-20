@@ -1,0 +1,30 @@
+.user-profile {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    .mat-card {
+        width: 50%;
+        @media screen and (max-width: 767px) {
+            width: 90%;
+        }
+    }
+    .mat-form-field {
+        display: block;
+    }
+    .back-btn {
+        margin-bottom: 1em;
+        padding: 0;
+        border-bottom: 1px solid #3af; 
+    }
+    .card-actions {
+        padding: 1em;
+        .mat-flat-button {
+            margin: 0 1em;
+        }
+    }
+}
+
+.alert-error {
+    color: #f63;
+}

@@ -11,7 +11,7 @@
             </mat-list>
         </mat-card-content>
         <mat-card-actions class="card-actions">
-            <a mat-flat-button (click)="goBack()">Cancel</a>
+            <a mat-flat-button  [routerLink]="['/']">User List</a>
             <a mat-flat-button color="primary" [routerLink]="['/edit-user', user.id]">Edit</a>
             <button mat-flat-button color="warn" (click)="deleteUser(user.id)">Remove</button>
         </mat-card-actions>

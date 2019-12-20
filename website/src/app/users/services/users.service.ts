@@ -31,4 +31,9 @@ export class UsersService {
     return this.http.put(`${userUrl}`, user);
   }
 
+  addUser(user) {
+    const userUrl = `${BASE_URL}users`;
+    return this.http.post(`${userUrl}`, user);
+  }
+
 }

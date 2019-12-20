@@ -1,31 +1,49 @@
-<div class="container user-list">
-    <ul class="col-xs-12">
-        <li>
-            <div class="row list-header">
-                    <div class="col">
-                        Name
-                    </div>
-                    <div class="col">
-                        Birth Date
-                    </div>
-                    <div class="col">
-                        Gender
-                    </div>
-                    <div class="col">
-                        Edit
-                    </div>
-                    <div class="col">
-                        Remove
-                    </div>   
-            </div>
-        </li>
-        <li *ngFor="let user of users">
-            <app-user-list-item [user]="user"></app-user-list-item>
-        </li>
-    </ul>
-    <div class="text-center control-btn-group">
-        <a class="btn btn-outline-primary"  [routerLink]="['/', page > 0 ? (page - 1) : 0]" [class.disabled]="page === 0" > Previous </a>
-        <span class="text-info">{{page + 1}}</span>
-        <a class="btn btn-outline-primary"  [routerLink]="['/', page < totalPage ? (page + 1) : page]" [class.disabled]="page === totalPage" > Next </a>
+<div class="user-table">
+    <div layout="row">
+        <button mat-raised-button color="primary" [routerLink]="['/add-user']">Create User</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z10">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="birthDate">
+            <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let element"> {{gender[element.gender]}} </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Edit </th>
+            <td mat-cell *matCellDef="let element"> <a [routerLink]="['/edit-user', element.id]">Edit</a> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div>
+        <mat-paginator [length]="total" [pageSize]="size" [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent = fetchData($event)">
+        </mat-paginator>
+        <div *ngIf="pageEvent">
+            <h5>Page Change Event Properties</h5>
+            <div>List length: {{size}}</div>
+            <div>Page size: {{total}}</div>
+        </div>
     </div>
 </div>

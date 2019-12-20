@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatDatepickerModule, MatNativeDateModule, MatCardModule, MatListModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule,
+    MatDatepickerModule, MatNativeDateModule, MatCardModule, MatListModule,
+    MatTableModule, MatPaginatorModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 
@@ -12,6 +14,7 @@ import { UserListItemComponent } from './users/components/user-list-item/user-li
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserListComponent,
     UserListItemComponent,
     UserProfileComponent,
-    EditUserComponent
+    EditUserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatNativeDateModule,
     MatRadioModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,10 @@
-
 <div class="user-profile">
     <mat-card>
         <mat-card-header>
             <mat-card-title>Edit User Profile</mat-card-title>
         </mat-card-header>
         <mat-card-content>
+            <p class="alert alert-error" *ngIf='errorMessage'>{{errorMessage}}</p>
             <form #userform="ngForm" (ngSubmit)="onSubmit(user.id, userform)" name="edit-user">
                 <mat-form-field>
                     <input matInput placeholder="First Name" name="firstName" [(ngModel)]="user.firstName" required>
@@ -32,8 +32,8 @@
             </form>
         </mat-card-content>
         <mat-card-actions class="card-actions">
-            <a mat-button [routerLink]="['']">Back to user list</a>
-            <button type="submit" class="btn btn-outline-primary" (click)="onSubmit(user.id)">Submit</button>
+            <a mat-button (click)="goBack()">Back</a>
+            <button type="submit" mat-flat-button color="primary" (click)="onSubmit(user.id)">Submit</button>
         </mat-card-actions>
     </mat-card>
 </div>

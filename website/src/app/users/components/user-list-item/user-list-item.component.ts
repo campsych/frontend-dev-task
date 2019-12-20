@@ -13,6 +13,7 @@ export class UserListItemComponent implements OnInit {
     M: 'Male',
     F: 'Female'
   }
+  
   constructor(private router: Router) { }
 
   ngOnInit() {

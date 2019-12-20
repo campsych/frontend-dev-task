@@ -10,22 +10,27 @@ import {User} from './../models/User';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  public users: User[];
+  public dataSource: User[] = [];
   public page: number = 0;
   public size: number = 20;
   public total: number = 0;
   public totalPage: number = 0;
-
+  public pageSizeOptions: number[] = [5, 10, 25, 100];
+  public displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'gender', 'id'];
+  public gender: object = {
+    M: 'Male',
+    F: 'Female'
+  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UsersService
   ) { }
 
-  initializeUserData(page: number = 0) {
-    this.userService.getUserList(page, this.size)
+  initializeUserData(page: number = 0, size: number = this.size) {
+    this.userService.getUserList(page, size)
       .subscribe((data:{ items: User[], page :number, total: number, size: number}) => {
-        this.users = data.items;
+        this.dataSource = data.items;
         this.total = data.total;
         this.totalPage = Math.round(this.total/this.size) - 1;
       });
@@ -41,12 +46,20 @@ export class UserListComponent implements OnInit {
     this.initializeUserData();
   }
 
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const page = parseInt(params.get("page")) || 0;
       this.page = page;
       this.initializeUserData(page)
     })
+  }
+
+  fetchData(pageOption) {
+    this.initializeUserData(pageOption.pageIndex, pageOption.pageSize)
   }
 
 }
